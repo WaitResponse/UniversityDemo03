@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+
+<hibernate-mapping package="com.gem.hql.pojo">
+	<class name="Car" table="t_car">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="cname"/>
+		<property name="price"/>
+		<many-to-one name="user" column="userid"/>
+	</class>  
+</hibernate-mapping>
+

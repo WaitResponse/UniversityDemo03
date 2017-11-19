@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.hql.pojo">
+	<class name="User" table="t_user">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="uname"/>
+		<property name="age"/>
+		<property name="height"/>
+		<property name="address"/>
+		<set name="cars" cascade="all" inverse="true">
+			<key column="userid"/>
+			<one-to-many class="Car"/>
+		</set>
+	</class>
+	<query name="getUsers">
+			<![CDATA[
+			from User
+			]]>
+		</query>
+</hibernate-mapping>
