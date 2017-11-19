@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.Hibernate4.o2o.pojo">
+	<class name="Card" table="t_card">
+		<id name="pid">
+			<generator class="foreign">
+				<param name="property">person</param>
+			</generator>
+		</id>
+		<property name="cardNo"/>
+		<one-to-one name="person" constrained="true"/><!-- constrained表示创建外键 -->
+	</class>
+</hibernate-mapping>

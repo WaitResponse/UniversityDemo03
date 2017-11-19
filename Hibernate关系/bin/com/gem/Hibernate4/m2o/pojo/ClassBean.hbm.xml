@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.Hibernate4.m2o.pojo">
+	<class name="ClassBean" table="t_class">
+		<id name="cid">
+			<generator class="assigned"/>
+		</id>
+		<property name="cname"/>
+	</class>
+</hibernate-mapping>

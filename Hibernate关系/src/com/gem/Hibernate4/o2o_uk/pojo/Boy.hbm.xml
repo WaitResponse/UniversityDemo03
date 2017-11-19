@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.Hibernate4.o2o_uk.pojo">
+	<class name="Boy" table="t_boy">
+		<id name="bid">
+			<generator class="native"/>
+		</id>
+		<property name="bname"/>
+		<one-to-one name="girl" property-ref="boy" cascade="save-update"/>
+	</class>
+</hibernate-mapping>

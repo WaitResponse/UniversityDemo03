@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+
+<hibernate-mapping package="com.gem.Hibernate4.o2o.pojo">
+	<class name="Person" table="t_person">
+		<id name="pid">
+			<generator class="assigned"/>
+		</id>
+		<property name="pname"/>
+		<property name="address"/>
+		<one-to-one name="card" cascade="all"/><!-- cascade表示级联，即该表更新的同时，字表也同时更新 -->
+		<!-- all表示person所有的动作(增删改查)，都跟card级联 -->
+		<!-- save-update表示person的增改查跟card级联 -->
+	</class>  
+</hibernate-mapping>

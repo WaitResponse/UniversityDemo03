@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.Hibernate4.o2m.pojo">
+	<class name="ClassBean" table="t_class">
+		<id name="cid">
+			<generator class="assigned"/>
+		</id>
+		<property name="cname"/>
+		<!-- inverse="false"表示由ClassBean来维护我们之间的关系
+		true表示由对方来维护我们之间的关系 -->
+		<!-- lazy默认值是false,如果改为true则表示不延迟加载 -->
+		<set name="Students" cascade="all" inverse="true" lazy="false"> <!-- table可以省略 -->
+			<key column="classid"/>
+			<one-to-many class="Student"/>
+		</set>
+		<!-- ClassBean会拿自己的的cid去t_student表里去找是否存在相同的Cid-->
+	</class>
+</hibernate-mapping>

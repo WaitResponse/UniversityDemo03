@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+
+<hibernate-mapping package="com.gem.Hibernate4.m2o.pojo">
+	<class name="Student" table="t_student">
+		<id name="sid">
+			<generator class="uuid"/>
+		</id>
+		<property name="sname"/>
+		<many-to-one name="cb" column="classid"/>
+		<!-- many-to-one表示在数据库自动生成一列叫classid -->
+		
+	</class>  
+</hibernate-mapping>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+
+<hibernate-mapping package="com.gem.Hibernate4.o2m.pojo">
+	<class name="Student" table="t_student">
+		<id name="sid">
+			<generator class="assigned"/>
+		</id>
+		<property name="sname"/>
+		<many-to-one name="cb" column="classid" />
+	</class>  
+</hibernate-mapping>
+
