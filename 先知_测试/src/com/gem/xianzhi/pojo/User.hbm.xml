@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  package="com.gem.xianzhi.pojo">
+	<class name="User" table="t_user">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="loginId"/>
+		<property name="pwd"/>
+		<property name="nickName"/>
+		<property name="headImg"/>
+		<property name="type"/>
+		<property name="state"/>
+		
+		<one-to-one name="userDetail"/>
+		
+		<!-- 收到的邮件 -->
+		<set name="receiveEmails" cascade="all" inverse="true" lazy="true">
+			<key column="receiveUserId"/>
+			<one-to-many class="Email"/>
+		</set>
+		
+		<!-- 发送的邮件 -->
+		<set name="sendEmails" cascade="all" inverse="true" lazy="true">
+			<key column="sendUserId"/>
+			<one-to-many class="Email"/>
+		</set>
+		
+		<!-- 粉丝 -->
+		<set name="fans" lazy="true">
+			<key column="fansId"/>
+			<one-to-many class="UserApply" />
+		</set>
+		
+		<!-- 关注的人 -->
+		<set name="followUser" lazy="true">
+			<key column="followUserId"/>
+			<one-to-many class="UserApply"/>
+		</set>
+		
+		<!-- 投诉 -->
+		<set name="complaint" cascade="all" inverse="true" lazy="true">
+			<key column="complaintUser"/>
+			<one-to-many class="Complaint"/>
+		</set>
+		
+		<!-- 发布的新闻(包括文章) -->
+		<set name="news" cascade="all" inverse="true" lazy="true">
+			<key column="author"/>
+			<one-to-many class="News"/>
+		</set>
+			
+		<!-- 收藏的新闻 -->	
+		<set name="collectNews" table="t_collect_news" cascade="all" inverse="true">
+			<key column="collectUser"/>  
+			<many-to-many class="News" column="newsId"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="UserDetail" table="t_user_detail">
+		<id name="id">
+			<generator class="foreign">
+				<param name="property">user</param>
+			</generator>
+		</id>
+		<property name="tel"/>
+		<property name="sex"/>
+		<property name="mailbox"/>
+		
+		<one-to-one name="user" constrained="true"/>
+		
+	
+	</class>
+</hibernate-mapping>

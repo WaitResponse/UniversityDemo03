@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="Classify" table="t_classify">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="name"/>
+	
+		 
+		<!-- 该分类下的新闻 -->
+		<set name="news" cascade="all" inverse="true" lazy="true">
+			<key column="classify"/>
+			<one-to-many class="News"/>
+		</set>
+	</class>
+</hibernate-mapping>

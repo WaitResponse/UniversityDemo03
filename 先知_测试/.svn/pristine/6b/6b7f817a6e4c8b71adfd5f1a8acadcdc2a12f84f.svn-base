@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="Discuss" table="t_discuss">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="content"/>
+		<property name="date"/>
+		<property name="count"/>
+	
+		<!-- 作者 -->
+		<many-to-one name="author"/>
+		
+		<!-- 评论的文章 -->
+		<many-to-one name="news" column="newsId"/>
+	</class>
+</hibernate-mapping>

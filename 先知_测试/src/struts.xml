@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true" />
+    <package name="default" namespace="/" extends="struts-default">
+    	<action name="*_UserAction" class="com.gem.xianzhi.actions.UserAction" method="{1}">
+    		<result name="bkLoginSuccess" type="redirect">/bgIndex.jsp</result>
+    		<result name="loadAllSuccess">/frames/bgMain.jsp</result>
+    		<result name="fail">/bgLogin.jsp</result>
+    		<result name="bdSuccess" type="redirectAction">
+    			<param name="actionName">preIndex_UserAction</param>
+    			<param name="namespace">/</param>
+    		</result>
+    	</action>
+    	
+    	<action name="*_NewsAction" class="com.gem.xianzhi.actions.NewsAction" method="{1}">
+    		<result name="loadAllSuccess">/bgNewsList.jsp</result>
+    		<result name="delSuccess" type="redirectAction">
+    			<param name="actionName">getNewsList_NewsAction</param>
+    			<param name="namespace">/</param>
+    		</result>
+    	</action>
+    	
+    	
+    	
+    	
+    <!--<action name="*_IndexAction" class="com.gem.qqzone.actions.IndexAction" method="{1}">
+    		<result name="success" type="redirect">/index.jsp</result>
+    	</action>-->	
+    	<action name="*_TopicAction" class="com.gem.xianzhi.actions.TopicAction" method="{1}">
+    		<result name="success" type="redirect">/frames/main.jsp</result>
+    		<result name="login">/login.jsp</result>
+    		<result name="detail">/detail.jsp</result>
+    		<result name="topicList" type="redirectAction">
+    			<param name="actionName">topicList_TopicAction</param>
+    			<param name="namespace">/</param>
+    		</result>
+    	</action>
+    	
+    </package>
+</struts>

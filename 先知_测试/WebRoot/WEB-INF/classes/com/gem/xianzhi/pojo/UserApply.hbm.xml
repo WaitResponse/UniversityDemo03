@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="UserApply" table="t_fans_followUser">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+	
+	<!-- 用户拿自己的Id去t_Fans的fansId匹配,如果相同则加载对应的followUserId,表示该用户被哪些人关注，即用户有哪些粉丝 -->
+	<many-to-one name="follow" column="fansId"/>
+	<many-to-one name="byFollow" column="followUserId"/>	
+	
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="Email" table="t_email">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="content" type="text" length="65535"/>
+		<property name="date"/>
+	
+		<!-- 收件人 -->
+		<many-to-one name="receiveUser" column="receiveUserId"/>
+		
+		<!-- 寄件人 -->
+		<many-to-one name="sendUser" column="sendUserId"/>
+	</class>
+</hibernate-mapping>

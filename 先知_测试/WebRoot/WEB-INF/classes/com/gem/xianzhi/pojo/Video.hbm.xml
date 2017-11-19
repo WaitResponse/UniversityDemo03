@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="Video" table="t_video">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="path"/>
+		
+		<many-to-one name="news" column="newsId"  unique-key="true"/>
+		
+	
+	</class>
+</hibernate-mapping>

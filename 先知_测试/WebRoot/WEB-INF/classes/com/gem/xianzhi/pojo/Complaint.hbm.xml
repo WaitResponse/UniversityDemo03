@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="Complaint" table="t_complaint">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="date"/>
+		<property name="reson"/>
+		<property name="content"/>
+		<many-to-one name="complaintUser"/>
+		
+		<many-to-one name="byComplainant"/>
+		<many-to-one name="news" column="newsId"/>
+		<many-to-one name="discuss" column="discussId"/>
+		<many-to-one name="reply" column="replyId"/>
+		 
+		<!-- 投诉截图 -->
+		<set name="picture" cascade="all" inverse="true" lazy="true">
+			<key column="complaintId"/>
+			<one-to-many class="ComplaintPicture"/>
+		</set>
+	</class>
+</hibernate-mapping>

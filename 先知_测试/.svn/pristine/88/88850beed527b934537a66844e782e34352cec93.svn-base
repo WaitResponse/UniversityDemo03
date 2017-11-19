@@ -1,0 +1,68 @@
+<%@page contentType="text/html; charset=utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>无标题文档</title>
+ <base href="${pageContext.request.contextPath}/">
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="js/jquery.js"></script>
+<script type="text/javascript">
+$(function(){	
+	//导航切换
+	$(".menuson li").click(function(){
+		$(".menuson li.active").removeClass("active")
+		$(this).addClass("active");
+	});
+	
+	$('.title').click(function(){
+		var $ul = $(this).next('ul');
+		$('dd').find('ul').slideUp();
+		if($ul.is(':visible')){
+			$(this).next('ul').slideUp();
+		}else{
+			$(this).next('ul').slideDown();
+		}
+	});
+})	
+</script>
+
+
+</head>
+
+<body style="background:#f0f9fd;">
+	<div class="lefttop"><span></span>先知后台管理系统</div>
+    
+    <dl class="leftmenu">
+        
+    <dd>
+    <div class="title">
+    <span><img src="images/leftico01.png" /></span>用户管理
+    </div>
+    	<ul class="menuson">
+        <li class="active"><cite></cite><a href="frames/bgMain.jsp" target="bgRightFrame">用户列表</a><i></i></li>
+        </ul>
+    </dd>
+        
+    
+    <dd>
+    <div class="title">
+    <span><img src="images/leftico02.png" /></span>新闻管理
+    </div>
+    <ul class="menuson">
+        <li><cite></cite><a href="getNewsList_NewsAction" target="bgRightFrame">新闻列表</a><i></i></li>
+        <li><cite></cite><a href="#" target="rightFrame">添加新闻</a><i></i></li>
+        <li><cite></cite><a href="#" target="rightFrame">轮播图管理</a><i></i></li>
+        </ul>     
+    </dd> 
+    
+    
+    <dd><div class="title"><span><img src="images/leftico03.png" /></span>投诉管理</div>
+    <ul class="menuson">
+        <li><cite></cite><a href="#" target="rightFrame">投诉列表</a><i></i></li>
+    </ul>    
+    </dd>  
+    
+
+    </dl>
+</body>
+</html>

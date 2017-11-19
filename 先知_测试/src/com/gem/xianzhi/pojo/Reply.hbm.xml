@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.xianzhi.pojo">
+	<class name="Reply" table="t_reply">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="content"/>
+		<property name="date"/>
+		<property name="count"/>
+		
+		<!-- 回复的评论 -->
+		<many-to-one  name="discuss" column="disscussId"/>
+		
+		<!--作者  -->
+		<many-to-one name="author"/>
+		
+		<!-- 回复的人 -->
+		<many-to-one name="replyUser"/>
+		
+	</class>
+</hibernate-mapping>

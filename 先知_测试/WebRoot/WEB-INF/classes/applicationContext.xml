@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+		
+		<!-- 1.配置数据源连接池 -->
+		<bean id="datasource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+			<property name="driverClass" value="org.gjt.mm.mysql.Driver"/>
+			<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/xianzhi"/>
+			<property name="user" value="root"/>
+			<property name="password" value="123"/>
+			<property name="initialPoolSize" value="10"/>
+			<property name="maxPoolSize" value="50"/>
+		</bean>
+		<!-- 2.sessionFactory  -->
+		<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+			<property name="dataSource" ref="datasource"/>
+			<property name="configLocation" value="classpath:hibernate.cfg.xml"/>		
+		</bean>
+		
+		<!-- 3.transactionManager事务管理器 -->
+		<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+			<property name="sessionFactory" ref="sessionFactory"/>		
+		</bean>
+	<!-- 	4.事务增强
+		transaction-manager="transactionManager"是默认的
+		以get开头是事务为可读写事务，其他事务都是默认事务(可读写事务) -->
+		<tx:advice id="tx_advice" transaction-manager="transactionManager">
+			<tx:attributes>
+				<tx:method name="get" read-only="true"/>
+				<tx:method name="*"/>
+			</tx:attributes>
+		</tx:advice>
+		
+		<!-- 5.将事务织入到业务类中(biz) -->
+		<aop:config>
+    		<aop:pointcut id="tx_pc" expression="execution(* com.gem.xianzhi.Biz.impl.*.*(..))"/>
+    		<aop:advisor advice-ref="tx_advice" pointcut-ref="tx_pc"/>
+   		 </aop:config>
+				
+		
+		<bean id="userDAO" class="com.gem.xianzhi.dao.impl.UserDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean>
+		<bean id="newsDAO" class="com.gem.xianzhi.dao.impl.NewsDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean>
+		<bean id="classifyDAO" class="com.gem.xianzhi.dao.impl.ClassifyDAOImpl">
+			<property name="sessionFactory" ref="sessionFactory"/>
+		</bean>
+		
+		
+		<bean id="userBiz" class="com.gem.xianzhi.Biz.impl.UserBizImpl">
+			<property name="userDAO" ref="userDAO"/>
+		</bean>	
+		<bean id="newsBiz"  class="com.gem.xianzhi.Biz.impl.NewsBizImpl">
+			<property name="newsDAO" ref="newsDAO"/>
+		</bean>
+		<bean id="classifyBiz"  class="com.gem.xianzhi.Biz.impl.ClassifyBizImpl">
+			<property name="classifyDAO" ref="classifyDAO"/>
+		</bean>
+		
+		
+		<bean id="userAction" class="com.gem.xianzhi.actions.UserAction">
+			<property name="userBiz" ref="userBiz"/>
+		</bean>		
+		<bean id="newsAction" class="com.gem.xianzhi.actions.NewsAction">
+			<property name="userBiz" ref="userBiz"/>
+			<property name="newsBiz" ref="newsBiz"/>
+			<property name="classifyBiz" ref="classifyBiz"></property>
+		</bean>
+		
+	
+
+
+</beans>

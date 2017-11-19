@@ -1,0 +1,31 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+ 	<!--  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/xianzhi</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">123</property>  -->
+		
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">false</property>
+	<!-- 	 <property name="hibernate.hbm2ddl.auto">create</property>
+ -->
+		<mapping resource="com/gem/xianzhi/pojo/Complaint.hbm.xml"/>	
+		<mapping resource="com/gem/xianzhi/pojo/ComplaintPicture.hbm.xml"/>	
+		<mapping resource="com/gem/xianzhi/pojo/Discuss.hbm.xml"/>	
+		<mapping resource="com/gem/xianzhi/pojo/Email.hbm.xml"/>	
+		<mapping resource="com/gem/xianzhi/pojo/News.hbm.xml"/>	
+		<mapping resource="com/gem/xianzhi/pojo/Classify.hbm.xml"/>	
+		<mapping resource="com/gem/xianzhi/pojo/Picture.hbm.xml"/>	
+		<mapping resource="com/gem/xianzhi/pojo/UserApply.hbm.xml"/>	
+		<mapping resource="com/gem/xianzhi/pojo/UserDetail.hbm.xml"/>
+		<mapping resource="com/gem/xianzhi/pojo/Video.hbm.xml"/>
+		<mapping resource="com/gem/xianzhi/pojo/User.hbm.xml"/>		
+		<mapping resource="com/gem/xianzhi/pojo/Reply.hbm.xml"/>
+		<mapping resource="com/gem/xianzhi/pojo/FocusPicture.hbm.xml"/>		
+	</session-factory>
+</hibernate-configuration>
