@@ -1,0 +1,33 @@
+#div0{
+	width:80%;
+	margin-left:10%;
+	background-color:darkturquoise;
+	height:600px;
+	border:1px solid gray;
+	margin-top:50px;
+}
+#login_div{
+	width:70%;
+	height:50%;
+	margin-left:15%;
+	margin-top:120px;	
+	background-color: darkorange;
+}
+#login_div form{
+	width:70%;
+	margin-left:15%;
+	margin-top:60px;
+}
+.tbl{
+	margin-left:30%;
+	width:50%;
+}
+.tbl tr,.tbl td{
+	align:center;
+	border:0px solid black;
+	height:30px;
+}
+.titleStyle{
+	padding:5px;
+	text-align:center;
+}

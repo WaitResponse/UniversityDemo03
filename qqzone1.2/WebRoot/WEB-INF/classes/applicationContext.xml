@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<beans>
+		<bean id="userDAO" class="com.gem.dao.qqzone.impl.userDAOImpl"/>
+		<bean id="topicDAO" class="com.gem.dao.qqzone.impl.topicDAOImpl"/>
+		<bean id="replyDAO" class="com.gem.dao.qqzone.impl.replyDAOImpl"/>
+		
+		<bean id="userBiz" class="com.gem.qqzone.biz.impl.UserBizImpl">
+			<property name="userDAO" ref="userDAO"/>
+		</bean>
+</beans>

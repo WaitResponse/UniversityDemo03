@@ -1,0 +1,16 @@
+*{
+	color:inactivecaptiontext;
+}
+body{
+	font-size:12px;
+	font-style: normal;
+	font-weight: lighter;
+	color: black;
+}
+div{
+	position:relative;
+	float:left;
+}
+a{
+	text-decoration: none;
+}
