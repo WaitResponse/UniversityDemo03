@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">false</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+
+		<mapping resource="com/gem/qqzone/pojo/User.hbm.xml"/>
+		<mapping resource="com/gem/qqzone/pojo/UserDetail.hbm.xml"/>
+		<mapping resource="com/gem/qqzone/pojo/Topic.hbm.xml"/>
+		<mapping resource="com/gem/qqzone/pojo/Reply.hbm.xml"/>
+		<mapping resource="com/gem/qqzone/pojo/HostReply.hbm.xml"/>
+		
+	</session-factory>
+</hibernate-configuration>

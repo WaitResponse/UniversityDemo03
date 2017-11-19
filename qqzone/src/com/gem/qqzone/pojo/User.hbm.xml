@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.qqzone.pojo">
+	<class name="User" table="t_user">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="loginId"/>
+		<property name="pwd"/>
+		<property name="nickName"/>
+		<property name="headImg"/>
+		
+		<set name="topics" cascade="all" inverse="true" lazy="true">
+			<key column="author"/>
+			<one-to-many class="Topic"/>
+		</set>
+		
+		<one-to-one name="userDetail"/>
+		
+		<set name="friends" table="t_user_friend" lazy="true">
+			<key column="userid"/>
+			<many-to-many class="User" column="fid"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>
