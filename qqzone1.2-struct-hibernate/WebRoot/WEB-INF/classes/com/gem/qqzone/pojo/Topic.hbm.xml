@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.qqzone.pojo">
+	<class name="Topic" table="t_topic">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="title"/>
+		<property name="content"/>
+		<property name="topicDate"/>
+		
+		<many-to-one name="author"/>
+		<set name="replies" cascade="all" inverse="true">
+			<key column="topicId"/>
+			<one-to-many class="Reply"/>
+		</set>
+	</class>
+</hibernate-mapping>

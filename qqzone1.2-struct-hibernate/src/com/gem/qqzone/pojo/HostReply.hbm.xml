@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping
+        SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.gem.qqzone.pojo">
+	<class name="HostReply" table="t_host_reply">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="content"/>
+		<property name="hostReplyDate"/>
+		<many-to-one name="reply" column="replyId" unique="true"/>
+	</class>
+</hibernate-mapping>
